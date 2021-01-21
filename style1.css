@@ -1,0 +1,128 @@
+*{
+    box-sizing: border-box;
+}
+*,*::before,*::after{
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    background-color: aqua;
+}
+.playboard{
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+   grid-template-columns: repeat(3,auto);
+}
+.boardcell{
+    height: 100px;
+    width: 100px;
+    background: #f1f1f1;
+    border: 1.5px solid purple;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+}
+.boardcell.X,
+.boardcell.circle{
+cursor: not-allowed;
+}
+.boardcell.X::before,
+.boardcell.X::after,
+.boardcell.circle::before{
+    background-color: brown;
+}
+
+.playboard.X .boardcell:not(.X):not(.circle):hover::before,
+  .playboard.X .boardcell:not(.X):not(.circle):hover::after,
+  .playboard.circle .boardcell:not(.X):not(.circle):hover::before {
+    background-color: brown;
+  }
+
+  .boardcell.X::before,
+  .boardcell.X::after,
+  .playboard.X .boardcell:not(.X):not(.circle):hover::before,
+  .playboard.X .boardcell:not(.X):not(.circle):hover::after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 90px;
+  }
+
+  .boardcell.X::before,
+  .playboard.X .boardcell:not(.X):not(.circle):hover::before {
+    transform: rotate(45deg);
+  }
+
+  .boardcell.X::after,
+  .playboard.X .boardcell:not(.X):not(.circle):hover::after {
+    transform: rotate(-45deg);
+  }
+
+  .boardcell.circle::before,
+  .boardcell.circle::after,
+  .playboard.circle .boardcell:not(.X):not(.circle):hover::before,
+  .playboard.circle .boardcell:not(.X):not(.circle):hover::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+  }
+
+  .boardcell.circle::before,
+  .playboard.circle .boardcell:not(.X):not(.circle):hover::before {
+    width: 90px;
+    height: 90px;
+  }
+
+  .boardcell.circle::after,
+  .playboard.circle .boardcell:not(.X):not(.circle):hover::after {
+    width: 65px;
+    height: 65px;
+    background-color:whitesmoke;
+  }
+
+  .after-match-over {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .6);
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 5rem;
+    flex-direction: column;
+  }
+
+  .after-match-over button {
+    font-size: 3rem;
+    background-color: white;
+    border: 1px solid black;
+    padding: .25em .5em;
+    cursor: pointer;
+  }
+  
+  .after-match-over button:hover{
+      background-color: tomato;
+      color: whitesmoke;
+      border-color: whitesmoke;
+  }
+
+  .after-match-over.show{
+      display: flex;
+  }
+ 
+  
+  
+  
+  
+  
